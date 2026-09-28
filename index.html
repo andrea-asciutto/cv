@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrea Asciutto — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /*
+    ╔══════════════════════════════════════════════════╗
+    ║  CV ANDREA ASCIUTTO                              ║
+    ║                                                  ║
+    ║  Come usare:                                     ║
+    ║  1. Apri con un editor di testo (VS Code, ecc.)  ║
+    ║  2. Modifica SOLO il testo tra i tag HTML        ║
+    ║  3. Salva                                        ║
+    ║  4. Apri nel browser (doppio click sul file)     ║
+    ║  5. Ctrl+P → Salva come PDF                      ║
+    ║     Margini: Nessuno                             ║
+    ║     Grafica di sfondo: attivata                  ║
+    ║                                                  ║
+    ║  Il layout non si rompe se tocchi solo il testo. ║
+    ╚══════════════════════════════════════════════════╝
+  */
+
+  @page {
+    size: A4;
+    margin: 20mm 22mm 18mm 22mm;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    font-size: 9pt;
+    line-height: 1.5;
+    color: #1a1a1a;
+    background: #e8e8e6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Simula il foglio A4 a schermo */
+  .page {
+    max-width: 210mm;
+    margin: 40px auto;
+    background: #fff;
+    padding: 20mm 22mm 18mm 22mm;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 22px;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 0.5pt solid #1a1a1a;
+    margin-bottom: 26px;
+  }
+
+  .header h1 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: 34pt;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .header h1 .i { font-style: italic; }
+
+  .header .role {
+    font-size: 9.5pt;
+    color: #555;
+    letter-spacing: 0.02em;
+  }
+
+  .header .contacts {
+    font-size: 8.2pt;
+    text-align: right;
+    color: #555;
+    line-height: 1.75;
+  }
+  .header .contacts .label {
+    color: #999;
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* ─── SECTIONS ─── */
+  section { margin-bottom: 22px; }
+
+  .section-label {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .kicker {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+  }
+
+  .rule { height: 0.5pt; background: #1a1a1a; }
+
+  /* ─── PROFILE ─── */
+  .profile {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 14pt;
+    line-height: 1.3;
+  }
+
+  /* ─── ENTRIES ─── */
+  .entry {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .meta { font-size: 8pt; color: #666; }
+  .meta .period { font-weight: 500; color: #1a1a1a; display: block; margin-bottom: 3px; }
+  .meta .place { display: block; font-size: 7.8pt; color: #888; }
+
+  .body h3 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: 14pt;
+    line-height: 1.1;
+    margin-bottom: 1px;
+  }
+  .body .role-line {
+    font-size: 8.8pt;
+    color: #555;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .body .narrative {
+    font-size: 8.8pt;
+    line-height: 1.55;
+    color: #2a2a2a;
+    margin-bottom: 10px;
+  }
+  .body .lead-in {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #999;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .body ul { list-style: none; padding: 0; }
+  .body ul li {
+    font-size: 8.8pt;
+    line-height: 1.5;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 6px;
+    color: #2a2a2a;
+  }
+  .body ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.68em;
+    width: 7px; height: 0.5pt;
+    background: #1a1a1a;
+  }
+  .body ul li strong { font-weight: 600; color: #1a1a1a; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    margin-top: 26px;
+    padding-top: 14px;
+    border-top: 0.3pt solid #ccc;
+    font-size: 6.8pt;
+    color: #999;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <header class="header">
+    <div>
+      <h1>Andrea <span class="i">Asciutto</span></h1>
+      <div class="role">Senior UX/UI Designer — Design Systems &amp; Enterprise Products</div>
+    </div>
+    <div class="contacts">
+      <span class="label">Base</span>Milano, IT<br>
+      <span class="label">Email</span><a href="mailto:andrea.asciutto@proton.me">andrea.asciutto@proton.me</a><br>
+      <span class="label">Web</span><a href="https://www.linkedin.com/in/andreaasciutto/">LinkedIn</a><br>
+    </div>
+  </header>
+
+  <!-- ═══════════ PROFILO ═══════════ -->
+  <section>
+    <div class="section-label">
+      <div class="kicker">Profilo</div>
+      <div class="rule"></div>
+    </div>
+    <p class="profile">
+      Progetto prodotti digitali dal primo requisito fino al rilascio. In quattro anni tra Accenture Song ed E.ON ho costruito Design System, disegnato flussi per servizi enterprise e PA, e lavorato su quel confine tra design e sviluppo dove i prodotti si giocano davvero.
+    </p>
+  </section>
+
+  <!-- ═══════════ ESPERIENZE ═══════════ -->
+  <section>
+    <div class="section-label">
+      <div class="kicker">Esperienze</div>
+      <div class="rule"></div>
+    </div>
+
+    <div class="entry">
+      <div class="meta">
+        <span class="period">Apr 2026 — oggi</span>
+        <span class="place">Milano</span>
+      </div>
+      <div class="body">
+        <h3>E.ON Energia</h3>
+        <div class="role-line">Product Designer | App E.ON Italia</div>
+        <p class="narrative">Il mio ruolo in E.ON è tenere insieme un'app che vive di richieste in arrivo da tante direzioni: dal team che propone miglioramenti, dal business che ha obiettivi commerciali, dal gruppo globale e dal regolatore. Sono l'unico designer interno sul canale app, in Italia siamo tre designer su tre canali che non si incrociano, e l'esperienza dell'app dipende da me.</p>
+        <div class="lead-in">Il lavoro concreto</div>
+        <ul>
+          <li><strong>Progetto nuove feature</strong> dentro un prodotto con anni di storia, cercando ogni volta il punto giusto tra novità e coerenza.</li>
+          <li><strong>Medio tra business e prodotto</strong> con Product Owner e sviluppatori, traducendo le richieste in qualcosa che gli utenti possano davvero usare.</li>
+          <li><strong>Faccio ricerca</strong> interviste e test di usabilità per fondare le decisioni su qualcosa di più solido delle opinioni interne.</li>
+          <li><strong>Coordino designer esterni</strong> che mi supportano nei momenti di picco, tenendo lo standard del canale.</li>
+          <li><strong>Lavoro dentro i vincoli</strong> del gruppo E.ON globale, allineandomi al mercato italiano.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="meta">
+        <span class="period">Apr 2022 — Apr 2026</span>
+        <span class="place">Roma → Milano</span>
+      </div>
+      <div class="body">
+        <h3>Accenture Song</h3>
+        <div class="role-line">UX/UI Designer</div>
+        <p class="narrative">Ho lavorato su progetti su svariati ambiti tra cui governativi e finanziario in una delle principali agenzie di experience design al mondo. È lì che ho costruito la mia specializzazione sui Design System, quella parte del lavoro che non si vede nelle interfacce ma che decide se un prodotto scala o si sfilaccia.</p>
+        <div class="lead-in">Il lavoro concreto</div>
+        <ul>
+          <li><strong>Design System completo</strong> per un'azienda leader in comunicazione, logistica e pagamenti: 212 token, 54 componenti, pattern di interazione e 60+ pagine di documentazione in Zeroheight a supporto di più prodotti.</li>
+          <li><strong>Progettazione Esperienze</strong> per servizi digitali enterprise e PA, con attenzione alla chiarezza dei percorsi, alla riduzione dei passaggi superflui e all'accessibilità.</li>
+          <li><strong>Handoff dev</strong>: lavoro continuo con gli sviluppatori tramite Figma Dev Mode, specifiche, annotazioni e revisioni per garantire che il prodotto rilasciato corrisponda al progettato.</li>
+          <li><strong>Ricerca</strong>: interviste e survey per far emergere bisogni e criticità, poi sintetizzati in raccomandazioni per il team di prodotto.</li>
+          <li><strong>Certificazioni</strong>: Salesforce Certified User Experience Designer.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SIDE PROJECTS ═══════════ -->
+  <section>
+    <div class="section-label">
+      <div class="kicker">Side Projects</div>
+      <div class="rule"></div>
+    </div>
+
+    <div class="entry">
+      <div class="meta">
+        <span class="period">Lug 2025</span>
+        <span class="place">Plugin Figma</span>
+      </div>
+      <div class="body">
+        <h3>Smarmellator</h3>
+        <p class="narrative">Plugin Figma che esegue in un click il detach di variabili, stili di testo e istanze, per velocizzare le operazioni di detach dei layout. L'ho progettato e sviluppato da zero, dalle specifiche alla logica del plugin.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="meta">
+        <span class="period">Giu 2025 — oggi</span>
+        <span class="place">Template Notion</span>
+      </div>
+      <div class="body">
+        <h3>Nexio</h3>
+        <p class="narrative">Template finanziario in Notion per tracciare cashflow, sottoscrizioni, patrimoni e obiettivi mensili in un cruscotto unico. Ho curato la struttura del database, la dashboard e un sistema di componenti riusabili.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FORMAZIONE ═══════════ -->
+  <section>
+    <div class="section-label">
+      <div class="kicker">Formazione</div>
+      <div class="rule"></div>
+    </div>
+
+    <div class="entry">
+      <div class="meta">
+        <span class="period">Ott 2021 — Feb 2022</span>
+        <span class="place">Milano</span>
+      </div>
+      <div class="body">
+        <h3>Talent Garden Innovation School</h3>
+        <div class="role-line">Master in UX Design</div>
+        <p class="narrative" style="margin-bottom:6px">Progetti principali:</p>
+        <ul>
+          <li><strong>Orapesce</strong> — app per la consegna di pesce fresco. Progettazione UX/UI, prototipazione in Figma e ricerca utente.</li>
+          <li><strong>eXpose</strong> — community per fotografi, pensata per semplificare l'organizzazione di uno shooting.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="meta">
+        <span class="period">Ott 2017 — Lug 2021</span>
+        <span class="place">Palermo</span>
+      </div>
+      <div class="body">
+        <h3>Università degli Studi di Palermo</h3>
+        <div class="role-line">Laurea triennale in Disegno Industriale</div>
+        <p class="narrative">Progetti di prodotto dal concept alla prototipazione, con enfasi su metodo, lavoro in team e attenzione all'esperienza d'uso — base che ho poi portato nel digitale.</p>
+      </div>
+    </div>
+  </section>
