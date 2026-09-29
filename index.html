@@ -22,6 +22,10 @@
     ║     Grafica di sfondo: attivata                  ║
     ║                                                  ║
     ║  Il layout non si rompe se tocchi solo il testo. ║
+    ║                                                  ║
+    ║  Switch lingua: il bottone IT/EN in alto a       ║
+    ║  destra alterna le due versioni. In stampa       ║
+    ║  esce solo la lingua attiva.                     ║
     ╚══════════════════════════════════════════════════╝
   */
 
@@ -48,6 +52,7 @@
     background: #fff;
     padding: 20mm 22mm 18mm 22mm;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    position: relative;
   }
 
   @media print {
@@ -58,7 +63,48 @@
       padding: 0;
       box-shadow: none;
     }
+    .lang-switch { display: none !important; }
   }
+
+  /* ─── LANGUAGE SWITCH ─── */
+  .lang-switch {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    display: flex;
+    gap: 0;
+    border: 0.5pt solid #1a1a1a;
+    border-radius: 0;
+    overflow: hidden;
+    z-index: 10;
+  }
+  .lang-switch button {
+    font-family: 'Inter', sans-serif;
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background: #fff;
+    color: #999;
+    transition: background 0.2s, color 0.2s;
+  }
+  .lang-switch button.active {
+    background: #1a1a1a;
+    color: #fff;
+  }
+  .lang-switch button:not(.active):hover {
+    background: #f0f0f0;
+    color: #1a1a1a;
+  }
+
+  /* ─── LANGUAGE VISIBILITY ─── */
+  .lang-en { display: none; }
+  .lang-it { display: revert; }
+  html.en .lang-en { display: revert; }
+  html.en .lang-it { display: none; }
 
   /* ─── HEADER ─── */
   .header {
@@ -92,6 +138,7 @@
     text-align: right;
     color: #555;
     line-height: 1.75;
+    padding-right: 68px;
   }
   .header .contacts .label {
     color: #999;
@@ -203,14 +250,22 @@
 <body>
 <div class="page">
 
+  <!-- ═══════════ LANGUAGE SWITCH ═══════════ -->
+  <div class="lang-switch">
+    <button id="btn-it" class="active" onclick="setLang('it')">IT</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
   <!-- ═══════════ HEADER ═══════════ -->
   <header class="header">
     <div>
       <h1>Andrea <span class="i">Asciutto</span></h1>
-      <div class="role">Senior UX/UI Designer — Design Systems &amp; Enterprise Products</div>
+      <div class="role">Senior Designer | Design Systems &amp; Enterprise Products</div>
     </div>
     <div class="contacts">
-      <span class="label">Base</span>Milano, IT<br>
+      <span class="label lang-it">Base</span>
+      <span class="label lang-en">Based in</span>
+      Milano, IT<br>
       <span class="label">Email</span><a href="mailto:andrea.asciutto@proton.me">andrea.asciutto@proton.me</a><br>
       <span class="label">Web</span><a href="https://www.linkedin.com/in/andreaasciutto/">LinkedIn</a><br>
     </div>
@@ -219,57 +274,92 @@
   <!-- ═══════════ PROFILO ═══════════ -->
   <section>
     <div class="section-label">
-      <div class="kicker">Profilo</div>
+      <div class="kicker lang-it">Profilo</div>
+      <div class="kicker lang-en">Profile</div>
       <div class="rule"></div>
     </div>
-    <p class="profile">
+    <p class="profile lang-it">
       Progetto prodotti digitali dal primo requisito fino al rilascio. In quattro anni tra Accenture Song ed E.ON ho costruito Design System, disegnato flussi per servizi enterprise e PA, e lavorato su quel confine tra design e sviluppo dove i prodotti si giocano davvero.
+    </p>
+    <p class="profile lang-en">
+      I design digital products from the first requirement through to release. Across four years at Accenture Song and E.ON I've built Design Systems, designed flows for enterprise and government services, and worked on that border between design and development where products are truly won or lost.
     </p>
   </section>
 
   <!-- ═══════════ ESPERIENZE ═══════════ -->
   <section>
     <div class="section-label">
-      <div class="kicker">Esperienze</div>
+      <div class="kicker lang-it">Esperienze</div>
+      <div class="kicker lang-en">Experience</div>
       <div class="rule"></div>
     </div>
 
+    <!-- E.ON -->
     <div class="entry">
       <div class="meta">
-        <span class="period">Apr 2026 — oggi</span>
-        <span class="place">Milano</span>
+        <span class="period lang-it">Apr 2026 — oggi</span>
+        <span class="period lang-en">Apr 2026 — present</span>
+        <span class="place lang-it">Milano</span>
+        <span class="place lang-en">Milan, Italy</span>
       </div>
       <div class="body">
         <h3>E.ON Energia</h3>
         <div class="role-line">Product Designer | App E.ON Italia</div>
-        <p class="narrative">Il mio ruolo in E.ON è tenere insieme un'app che vive di richieste in arrivo da tante direzioni: dal team che propone miglioramenti, dal business che ha obiettivi commerciali, dal gruppo globale e dal regolatore. Sono l'unico designer interno sul canale app, in Italia siamo tre designer su tre canali che non si incrociano, e l'esperienza dell'app dipende da me.</p>
-        <div class="lead-in">Il lavoro concreto</div>
-        <ul>
+
+        <p class="narrative lang-it">Il mio ruolo in E.ON è tenere insieme un'app che vive di richieste in arrivo da tante direzioni: dal team che propone miglioramenti, dal business che ha obiettivi commerciali, dal gruppo globale e dal regolatore. Sono l'unico designer interno sul canale app, in Italia siamo tre designer su tre canali che non si incrociano, e l'esperienza dell'app dipende da me.</p>
+        <p class="narrative lang-en">My role at E.ON is to hold together an app that lives on incoming requests from many directions: the team proposing improvements, the business with commercial goals, the global group, and regulators. I'm the only in-house designer on the app channel — in Italy we are three designers on three separate channels — and the app experience is my responsibility.</p>
+
+        <div class="lead-in lang-it">Il lavoro concreto</div>
+        <div class="lead-in lang-en">The actual work</div>
+
+        <ul class="lang-it">
           <li><strong>Progetto nuove feature</strong> dentro un prodotto con anni di storia, cercando ogni volta il punto giusto tra novità e coerenza.</li>
           <li><strong>Medio tra business e prodotto</strong> con Product Owner e sviluppatori, traducendo le richieste in qualcosa che gli utenti possano davvero usare.</li>
           <li><strong>Faccio ricerca</strong> interviste e test di usabilità per fondare le decisioni su qualcosa di più solido delle opinioni interne.</li>
           <li><strong>Coordino designer esterni</strong> che mi supportano nei momenti di picco, tenendo lo standard del canale.</li>
           <li><strong>Lavoro dentro i vincoli</strong> del gruppo E.ON globale, allineandomi al mercato italiano.</li>
         </ul>
+        <ul class="lang-en">
+          <li><strong>Design new features</strong> within a product with years of history, finding the right balance between novelty and consistency every time.</li>
+          <li><strong>Bridge business and product</strong> with Product Owners and developers, translating requests into something users can actually use.</li>
+          <li><strong>Conduct research</strong> — interviews and usability tests to ground decisions on something more solid than internal opinions.</li>
+          <li><strong>Coordinate external designers</strong> who support me during peak workloads, maintaining the channel's quality standard.</li>
+          <li><strong>Work within the constraints</strong> of the global E.ON group while adapting to the Italian market.</li>
+        </ul>
       </div>
     </div>
 
+    <!-- Accenture Song -->
     <div class="entry">
       <div class="meta">
-        <span class="period">Apr 2022 — Apr 2026</span>
-        <span class="place">Roma → Milano</span>
+        <span class="period lang-it">Apr 2022 — Apr 2026</span>
+        <span class="period lang-en">Apr 2022 — Apr 2026</span>
+        <span class="place lang-it">Roma → Milano</span>
+        <span class="place lang-en">Rome → Milan, Italy</span>
       </div>
       <div class="body">
         <h3>Accenture Song</h3>
         <div class="role-line">UX/UI Designer</div>
-        <p class="narrative">Ho lavorato su progetti su svariati ambiti tra cui governativi e finanziario in una delle principali agenzie di experience design al mondo. È lì che ho costruito la mia specializzazione sui Design System, quella parte del lavoro che non si vede nelle interfacce ma che decide se un prodotto scala o si sfilaccia.</p>
-        <div class="lead-in">Il lavoro concreto</div>
-        <ul>
+
+        <p class="narrative lang-it">Ho lavorato su progetti su svariati ambiti tra cui governativi e finanziario in una delle principali agenzie di experience design al mondo. È lì che ho costruito la mia specializzazione sui Design System, quella parte del lavoro che non si vede nelle interfacce ma che decide se un prodotto scala o si sfilaccia.</p>
+        <p class="narrative lang-en">I worked on projects spanning government and financial services at one of the world's leading experience design agencies. That's where I built my specialisation in Design Systems — the part of the work that's invisible in the interface but decides whether a product scales or falls apart.</p>
+
+        <div class="lead-in lang-it">Il lavoro concreto</div>
+        <div class="lead-in lang-en">The actual work</div>
+
+        <ul class="lang-it">
           <li><strong>Design System completo</strong> per un'azienda leader in comunicazione, logistica e pagamenti: 212 token, 54 componenti, pattern di interazione e 60+ pagine di documentazione in Zeroheight a supporto di più prodotti.</li>
           <li><strong>Progettazione Esperienze</strong> per servizi digitali enterprise e PA, con attenzione alla chiarezza dei percorsi, alla riduzione dei passaggi superflui e all'accessibilità.</li>
           <li><strong>Handoff dev</strong>: lavoro continuo con gli sviluppatori tramite Figma Dev Mode, specifiche, annotazioni e revisioni per garantire che il prodotto rilasciato corrisponda al progettato.</li>
           <li><strong>Ricerca</strong>: interviste e survey per far emergere bisogni e criticità, poi sintetizzati in raccomandazioni per il team di prodotto.</li>
           <li><strong>Certificazioni</strong>: Salesforce Certified User Experience Designer.</li>
+        </ul>
+        <ul class="lang-en">
+          <li><strong>Full Design System</strong> for a leader in communications, logistics and payments: 212 tokens, 54 components, interaction patterns, and 60+ pages of documentation on Zeroheight supporting multiple products.</li>
+          <li><strong>Experience design</strong> for enterprise and government digital services, focusing on clear user journeys, removing unnecessary steps, and accessibility.</li>
+          <li><strong>Dev handoff</strong>: continuous collaboration with developers through Figma Dev Mode, specs, annotations and reviews to ensure the shipped product matches the design.</li>
+          <li><strong>Research</strong>: interviews and surveys to surface needs and pain points, synthesised into actionable recommendations for the product team.</li>
+          <li><strong>Certifications</strong>: Salesforce Certified User Experience Designer.</li>
         </ul>
       </div>
     </div>
@@ -282,25 +372,31 @@
       <div class="rule"></div>
     </div>
 
+    <!-- Smarmellator -->
     <div class="entry">
       <div class="meta">
-        <span class="period">Lug 2025</span>
-        <span class="place">Plugin Figma</span>
+        <span class="period lang-it">Lug 2025</span>
+        <span class="period lang-en">Jul 2025</span>
+        <span class="place">Figma Plugin</span>
       </div>
       <div class="body">
         <h3>Smarmellator</h3>
-        <p class="narrative">Plugin Figma che esegue in un click il detach di variabili, stili di testo e istanze, per velocizzare le operazioni di detach dei layout. L'ho progettato e sviluppato da zero, dalle specifiche alla logica del plugin.</p>
+        <p class="narrative lang-it">Plugin Figma che esegue in un click il detach di variabili, stili di testo e istanze, per velocizzare le operazioni di detach dei layout. L'ho progettato e sviluppato da zero, dalle specifiche alla logica del plugin.</p>
+        <p class="narrative lang-en">A Figma plugin that detaches variables, text styles and instances in one click, speeding up layout detach operations. I designed and developed it from scratch, from specs to plugin logic.</p>
       </div>
     </div>
 
+    <!-- Nexio -->
     <div class="entry">
       <div class="meta">
-        <span class="period">Giu 2025 — oggi</span>
-        <span class="place">Template Notion</span>
+        <span class="period lang-it">Giu 2025 — oggi</span>
+        <span class="period lang-en">Jun 2025 — present</span>
+        <span class="place">Notion Template</span>
       </div>
       <div class="body">
         <h3>Nexio</h3>
-        <p class="narrative">Template finanziario in Notion per tracciare cashflow, sottoscrizioni, patrimoni e obiettivi mensili in un cruscotto unico. Ho curato la struttura del database, la dashboard e un sistema di componenti riusabili.</p>
+        <p class="narrative lang-it">Template finanziario in Notion per tracciare cashflow, sottoscrizioni, patrimoni e obiettivi mensili in un cruscotto unico. Ho curato la struttura del database, la dashboard e un sistema di componenti riusabili.</p>
+        <p class="narrative lang-en">A financial template in Notion to track cashflow, subscriptions, assets and monthly goals in a single dashboard. I designed the database structure, the dashboard, and a system of reusable components.</p>
       </div>
     </div>
   </section>
@@ -308,35 +404,71 @@
   <!-- ═══════════ FORMAZIONE ═══════════ -->
   <section>
     <div class="section-label">
-      <div class="kicker">Formazione</div>
+      <div class="kicker lang-it">Formazione</div>
+      <div class="kicker lang-en">Education</div>
       <div class="rule"></div>
     </div>
 
+    <!-- Talent Garden -->
     <div class="entry">
       <div class="meta">
-        <span class="period">Ott 2021 — Feb 2022</span>
-        <span class="place">Milano</span>
+        <span class="period lang-it">Ott 2021 — Feb 2022</span>
+        <span class="period lang-en">Oct 2021 — Feb 2022</span>
+        <span class="place lang-it">Milano</span>
+        <span class="place lang-en">Milan, Italy</span>
       </div>
       <div class="body">
         <h3>Talent Garden Innovation School</h3>
         <div class="role-line">Master in UX Design</div>
-        <p class="narrative" style="margin-bottom:6px">Progetti principali:</p>
-        <ul>
+        <p class="narrative lang-it" style="margin-bottom:6px">Progetti principali:</p>
+        <p class="narrative lang-en" style="margin-bottom:6px">Key projects:</p>
+        <ul class="lang-it">
           <li><strong>Orapesce</strong> — app per la consegna di pesce fresco. Progettazione UX/UI, prototipazione in Figma e ricerca utente.</li>
           <li><strong>eXpose</strong> — community per fotografi, pensata per semplificare l'organizzazione di uno shooting.</li>
+        </ul>
+        <ul class="lang-en">
+          <li><strong>Orapesce</strong> — a fresh fish delivery app. UX/UI design, Figma prototyping and user research.</li>
+          <li><strong>eXpose</strong> — a photography community designed to simplify organising a photoshoot.</li>
         </ul>
       </div>
     </div>
 
+    <!-- Università -->
     <div class="entry">
       <div class="meta">
-        <span class="period">Ott 2017 — Lug 2021</span>
-        <span class="place">Palermo</span>
+        <span class="period lang-it">Ott 2017 — Lug 2021</span>
+        <span class="period lang-en">Oct 2017 — Jul 2021</span>
+        <span class="place lang-it">Palermo</span>
+        <span class="place lang-en">Palermo, Italy</span>
       </div>
       <div class="body">
         <h3>Università degli Studi di Palermo</h3>
-        <div class="role-line">Laurea triennale in Disegno Industriale</div>
-        <p class="narrative">Progetti di prodotto dal concept alla prototipazione, con enfasi su metodo, lavoro in team e attenzione all'esperienza d'uso — base che ho poi portato nel digitale.</p>
+        <div class="role-line lang-it">Laurea triennale in Disegno Industriale</div>
+        <div class="role-line lang-en">Bachelor's degree in Industrial Design</div>
+        <p class="narrative lang-it">Progetti di prodotto dal concept alla prototipazione, con enfasi su metodo, lavoro in team e attenzione all'esperienza d'uso — base che ho poi portato nel digitale.</p>
+        <p class="narrative lang-en">Product projects from concept to prototype, with a focus on methodology, teamwork and attention to user experience — a foundation I later brought into digital design.</p>
       </div>
     </div>
   </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <div class="footer lang-it">
+    Autorizzo il trattamento dei dati personali contenuti nel mio curriculum vitae in base all'art. 13 GDPR 679/16
+  </div>
+  <div class="footer lang-en">
+    I authorize the processing of personal data contained in this CV pursuant to art. 13 GDPR 679/16
+  </div>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    var html = document.documentElement;
+    html.className = lang === 'en' ? 'en' : '';
+    html.setAttribute('lang', lang);
+    document.getElementById('btn-it').className = lang === 'it' ? 'active' : '';
+    document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+  }
+</script>
+</body>
+</html>
