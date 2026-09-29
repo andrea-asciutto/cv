@@ -8,27 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /*
-    ╔══════════════════════════════════════════════════╗
-    ║  CV ANDREA ASCIUTTO                              ║
-    ║                                                  ║
-    ║  Come usare:                                     ║
-    ║  1. Apri con un editor di testo (VS Code, ecc.)  ║
-    ║  2. Modifica SOLO il testo tra i tag HTML        ║
-    ║  3. Salva                                        ║
-    ║  4. Apri nel browser (doppio click sul file)     ║
-    ║  5. Ctrl+P → Salva come PDF                      ║
-    ║     Margini: Nessuno                             ║
-    ║     Grafica di sfondo: attivata                  ║
-    ║                                                  ║
-    ║  Il layout non si rompe se tocchi solo il testo. ║
-    ║                                                  ║
-    ║  Switch lingua: il bottone IT/EN in alto a       ║
-    ║  destra alterna le due versioni. In stampa       ║
-    ║  esce solo la lingua attiva.                     ║
-    ╚══════════════════════════════════════════════════╝
-  */
-
   @page {
     size: A4;
     margin: 20mm 22mm 18mm 22mm;
@@ -45,7 +24,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Simula il foglio A4 a schermo */
   .page {
     max-width: 210mm;
     margin: 40px auto;
@@ -66,7 +44,6 @@
     .lang-switch { display: none !important; }
   }
 
-  /* ─── LANGUAGE SWITCH ─── */
   .lang-switch {
     position: absolute;
     top: 22px;
@@ -100,13 +77,11 @@
     color: #1a1a1a;
   }
 
-  /* ─── LANGUAGE VISIBILITY ─── */
   .lang-en { display: none; }
   .lang-it { display: revert; }
   html.en .lang-en { display: revert; }
   html.en .lang-it { display: none; }
 
-  /* ─── HEADER ─── */
   .header {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -149,7 +124,6 @@
     margin-bottom: 1px;
   }
 
-  /* ─── SECTIONS ─── */
   section { margin-bottom: 22px; }
 
   .section-label {
@@ -169,14 +143,12 @@
 
   .rule { height: 0.5pt; background: #1a1a1a; }
 
-  /* ─── PROFILE ─── */
   .profile {
     font-family: 'Instrument Serif', Georgia, serif;
     font-size: 14pt;
     line-height: 1.3;
   }
 
-  /* ─── ENTRIES ─── */
   .entry {
     display: grid;
     grid-template-columns: 130px 1fr;
@@ -234,7 +206,6 @@
   }
   .body ul li strong { font-weight: 600; color: #1a1a1a; }
 
-  /* ─── FOOTER ─── */
   .footer {
     margin-top: 26px;
     padding-top: 14px;
@@ -250,13 +221,11 @@
 <body>
 <div class="page">
 
-  <!-- ═══════════ LANGUAGE SWITCH ═══════════ -->
   <div class="lang-switch">
     <button id="btn-it" class="active" onclick="setLang('it')">IT</button>
     <button id="btn-en" onclick="setLang('en')">EN</button>
   </div>
 
-  <!-- ═══════════ HEADER ═══════════ -->
   <header class="header">
     <div>
       <h1>Andrea <span class="i">Asciutto</span></h1>
@@ -271,7 +240,6 @@
     </div>
   </header>
 
-  <!-- ═══════════ PROFILO ═══════════ -->
   <section>
     <div class="section-label">
       <div class="kicker lang-it">Profilo</div>
@@ -286,7 +254,6 @@
     </p>
   </section>
 
-  <!-- ═══════════ ESPERIENZE ═══════════ -->
   <section>
     <div class="section-label">
       <div class="kicker lang-it">Esperienze</div>
@@ -294,11 +261,10 @@
       <div class="rule"></div>
     </div>
 
-    <!-- E.ON -->
     <div class="entry">
       <div class="meta">
-        <span class="period lang-it">Apr 2026 — oggi</span>
-        <span class="period lang-en">Apr 2026 — present</span>
+        <span class="period lang-it">Apr 2026 – oggi</span>
+        <span class="period lang-en">Apr 2026 – present</span>
         <span class="place lang-it">Milano</span>
         <span class="place lang-en">Milan, Italy</span>
       </div>
@@ -307,7 +273,7 @@
         <div class="role-line">Product Designer | App E.ON Italia</div>
 
         <p class="narrative lang-it">Il mio ruolo in E.ON è tenere insieme un'app che vive di richieste in arrivo da tante direzioni: dal team che propone miglioramenti, dal business che ha obiettivi commerciali, dal gruppo globale e dal regolatore. Sono l'unico designer interno sul canale app, in Italia siamo tre designer su tre canali che non si incrociano, e l'esperienza dell'app dipende da me.</p>
-        <p class="narrative lang-en">My role at E.ON is to hold together an app that lives on incoming requests from many directions: the team proposing improvements, the business with commercial goals, the global group, and regulators. I'm the only in-house designer on the app channel — in Italy we are three designers on three separate channels — and the app experience is my responsibility.</p>
+        <p class="narrative lang-en">My role at E.ON is to hold together an app that lives on incoming requests from many directions: the team proposing improvements, the business with commercial goals, the global group, and regulators. I'm the only in-house designer on the app channel. In Italy we are three designers on three separate channels, and the app experience is my responsibility.</p>
 
         <div class="lead-in lang-it">Il lavoro concreto</div>
         <div class="lead-in lang-en">The actual work</div>
@@ -322,18 +288,17 @@
         <ul class="lang-en">
           <li><strong>Design new features</strong> within a product with years of history, finding the right balance between novelty and consistency every time.</li>
           <li><strong>Bridge business and product</strong> with Product Owners and developers, translating requests into something users can actually use.</li>
-          <li><strong>Conduct research</strong> — interviews and usability tests to ground decisions on something more solid than internal opinions.</li>
+          <li><strong>Conduct research,</strong> interviews and usability tests to ground decisions on something more solid than internal opinions.</li>
           <li><strong>Coordinate external designers</strong> who support me during peak workloads, maintaining the channel's quality standard.</li>
           <li><strong>Work within the constraints</strong> of the global E.ON group while adapting to the Italian market.</li>
         </ul>
       </div>
     </div>
 
-    <!-- Accenture Song -->
     <div class="entry">
       <div class="meta">
-        <span class="period lang-it">Apr 2022 — Apr 2026</span>
-        <span class="period lang-en">Apr 2022 — Apr 2026</span>
+        <span class="period lang-it">Apr 2022 – Apr 2026</span>
+        <span class="period lang-en">Apr 2022 – Apr 2026</span>
         <span class="place lang-it">Roma → Milano</span>
         <span class="place lang-en">Rome → Milan, Italy</span>
       </div>
@@ -342,7 +307,7 @@
         <div class="role-line">UX/UI Designer</div>
 
         <p class="narrative lang-it">Ho lavorato su progetti su svariati ambiti tra cui governativi e finanziario in una delle principali agenzie di experience design al mondo. È lì che ho costruito la mia specializzazione sui Design System, quella parte del lavoro che non si vede nelle interfacce ma che decide se un prodotto scala o si sfilaccia.</p>
-        <p class="narrative lang-en">I worked on projects spanning government and financial services at one of the world's leading experience design agencies. That's where I built my specialisation in Design Systems — the part of the work that's invisible in the interface but decides whether a product scales or falls apart.</p>
+        <p class="narrative lang-en">I worked on projects spanning government and financial services at one of the world's leading experience design agencies. That's where I built my specialisation in Design Systems, the part of the work that's invisible in the interface but decides whether a product scales or falls apart.</p>
 
         <div class="lead-in lang-it">Il lavoro concreto</div>
         <div class="lead-in lang-en">The actual work</div>
@@ -365,14 +330,12 @@
     </div>
   </section>
 
-  <!-- ═══════════ SIDE PROJECTS ═══════════ -->
   <section>
     <div class="section-label">
       <div class="kicker">Side Projects</div>
       <div class="rule"></div>
     </div>
 
-    <!-- Smarmellator -->
     <div class="entry">
       <div class="meta">
         <span class="period lang-it">Lug 2025</span>
@@ -386,11 +349,10 @@
       </div>
     </div>
 
-    <!-- Nexio -->
     <div class="entry">
       <div class="meta">
-        <span class="period lang-it">Giu 2025 — oggi</span>
-        <span class="period lang-en">Jun 2025 — present</span>
+        <span class="period lang-it">Giu 2025 – oggi</span>
+        <span class="period lang-en">Jun 2025 – present</span>
         <span class="place">Notion Template</span>
       </div>
       <div class="body">
@@ -401,7 +363,6 @@
     </div>
   </section>
 
-  <!-- ═══════════ FORMAZIONE ═══════════ -->
   <section>
     <div class="section-label">
       <div class="kicker lang-it">Formazione</div>
@@ -409,11 +370,10 @@
       <div class="rule"></div>
     </div>
 
-    <!-- Talent Garden -->
     <div class="entry">
       <div class="meta">
-        <span class="period lang-it">Ott 2021 — Feb 2022</span>
-        <span class="period lang-en">Oct 2021 — Feb 2022</span>
+        <span class="period lang-it">Ott 2021 – Feb 2022</span>
+        <span class="period lang-en">Oct 2021 – Feb 2022</span>
         <span class="place lang-it">Milano</span>
         <span class="place lang-en">Milan, Italy</span>
       </div>
@@ -423,21 +383,20 @@
         <p class="narrative lang-it" style="margin-bottom:6px">Progetti principali:</p>
         <p class="narrative lang-en" style="margin-bottom:6px">Key projects:</p>
         <ul class="lang-it">
-          <li><strong>Orapesce</strong> — app per la consegna di pesce fresco. Progettazione UX/UI, prototipazione in Figma e ricerca utente.</li>
-          <li><strong>eXpose</strong> — community per fotografi, pensata per semplificare l'organizzazione di uno shooting.</li>
+          <li><strong>Orapesce</strong>, app per la consegna di pesce fresco. Progettazione UX/UI, prototipazione in Figma e ricerca utente.</li>
+          <li><strong>eXpose</strong>, community per fotografi, pensata per semplificare l'organizzazione di uno shooting.</li>
         </ul>
         <ul class="lang-en">
-          <li><strong>Orapesce</strong> — a fresh fish delivery app. UX/UI design, Figma prototyping and user research.</li>
-          <li><strong>eXpose</strong> — a photography community designed to simplify organising a photoshoot.</li>
+          <li><strong>Orapesce</strong>, a fresh fish delivery app. UX/UI design, Figma prototyping and user research.</li>
+          <li><strong>eXpose</strong>, a photography community designed to simplify organising a photoshoot.</li>
         </ul>
       </div>
     </div>
 
-    <!-- Università -->
     <div class="entry">
       <div class="meta">
-        <span class="period lang-it">Ott 2017 — Lug 2021</span>
-        <span class="period lang-en">Oct 2017 — Jul 2021</span>
+        <span class="period lang-it">Ott 2017 – Lug 2021</span>
+        <span class="period lang-en">Oct 2017 – Jul 2021</span>
         <span class="place lang-it">Palermo</span>
         <span class="place lang-en">Palermo, Italy</span>
       </div>
@@ -445,13 +404,12 @@
         <h3>Università degli Studi di Palermo</h3>
         <div class="role-line lang-it">Laurea triennale in Disegno Industriale</div>
         <div class="role-line lang-en">Bachelor's degree in Industrial Design</div>
-        <p class="narrative lang-it">Progetti di prodotto dal concept alla prototipazione, con enfasi su metodo, lavoro in team e attenzione all'esperienza d'uso — base che ho poi portato nel digitale.</p>
-        <p class="narrative lang-en">Product projects from concept to prototype, with a focus on methodology, teamwork and attention to user experience — a foundation I later brought into digital design.</p>
+        <p class="narrative lang-it">Progetti di prodotto dal concept alla prototipazione, con enfasi su metodo, lavoro in team e attenzione all'esperienza d'uso, base che ho poi portato nel digitale.</p>
+        <p class="narrative lang-en">Product projects from concept to prototype, with a focus on methodology, teamwork and attention to user experience, a foundation I later brought into digital design.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ FOOTER ═══════════ -->
   <div class="footer lang-it">
     Autorizzo il trattamento dei dati personali contenuti nel mio curriculum vitae in base all'art. 13 GDPR 679/16
   </div>
