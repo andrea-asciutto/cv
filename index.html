@@ -77,10 +77,14 @@
     color: #1a1a1a;
   }
 
-  .lang-en { display: none; }
-  .lang-it { display: revert; }
-  html.en .lang-en { display: revert; }
-  html.en .lang-it { display: none; }
+  /*
+    Logica lingua: quando html non ha classe .en,
+    nascondi .lang-en. Quando ha classe .en, nascondi .lang-it.
+    Niente revert: gli elementi visibili usano il loro
+    display naturale dalle altre regole CSS.
+  */
+  html:not(.en) .lang-en { display: none !important; }
+  html.en .lang-it { display: none !important; }
 
   .header {
     display: grid;
@@ -240,6 +244,7 @@
     </div>
   </header>
 
+  <!-- PROFILO -->
   <section>
     <div class="section-label">
       <div class="kicker lang-it">Profilo</div>
@@ -254,6 +259,7 @@
     </p>
   </section>
 
+  <!-- ESPERIENZE -->
   <section>
     <div class="section-label">
       <div class="kicker lang-it">Esperienze</div>
@@ -261,6 +267,7 @@
       <div class="rule"></div>
     </div>
 
+    <!-- E.ON -->
     <div class="entry">
       <div class="meta">
         <span class="period lang-it">Apr 2026 – oggi</span>
@@ -281,20 +288,21 @@
         <ul class="lang-it">
           <li><strong>Progetto nuove feature</strong> dentro un prodotto con anni di storia, cercando ogni volta il punto giusto tra novità e coerenza.</li>
           <li><strong>Medio tra business e prodotto</strong> con Product Owner e sviluppatori, traducendo le richieste in qualcosa che gli utenti possano davvero usare.</li>
-          <li><strong>Faccio ricerca</strong> interviste e test di usabilità per fondare le decisioni su qualcosa di più solido delle opinioni interne.</li>
+          <li><strong>Faccio ricerca:</strong> interviste e test di usabilità per fondare le decisioni su qualcosa di più solido delle opinioni interne.</li>
           <li><strong>Coordino designer esterni</strong> che mi supportano nei momenti di picco, tenendo lo standard del canale.</li>
           <li><strong>Lavoro dentro i vincoli</strong> del gruppo E.ON globale, allineandomi al mercato italiano.</li>
         </ul>
         <ul class="lang-en">
           <li><strong>Design new features</strong> within a product with years of history, finding the right balance between novelty and consistency every time.</li>
           <li><strong>Bridge business and product</strong> with Product Owners and developers, translating requests into something users can actually use.</li>
-          <li><strong>Conduct research,</strong> interviews and usability tests to ground decisions on something more solid than internal opinions.</li>
+          <li><strong>Conduct research:</strong> interviews and usability tests to ground decisions on something more solid than internal opinions.</li>
           <li><strong>Coordinate external designers</strong> who support me during peak workloads, maintaining the channel's quality standard.</li>
           <li><strong>Work within the constraints</strong> of the global E.ON group while adapting to the Italian market.</li>
         </ul>
       </div>
     </div>
 
+    <!-- Accenture Song -->
     <div class="entry">
       <div class="meta">
         <span class="period lang-it">Apr 2022 – Apr 2026</span>
@@ -330,6 +338,7 @@
     </div>
   </section>
 
+  <!-- SIDE PROJECTS -->
   <section>
     <div class="section-label">
       <div class="kicker">Side Projects</div>
@@ -363,6 +372,7 @@
     </div>
   </section>
 
+  <!-- FORMAZIONE -->
   <section>
     <div class="section-label">
       <div class="kicker lang-it">Formazione</div>
@@ -422,7 +432,11 @@
 <script>
   function setLang(lang) {
     var html = document.documentElement;
-    html.className = lang === 'en' ? 'en' : '';
+    if (lang === 'en') {
+      html.classList.add('en');
+    } else {
+      html.classList.remove('en');
+    }
     html.setAttribute('lang', lang);
     document.getElementById('btn-it').className = lang === 'it' ? 'active' : '';
     document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
